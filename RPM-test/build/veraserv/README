@@ -1,0 +1,23 @@
+test programs for RPM-test packaging procedures (to be integrated into a build process)
+
+proj1/	-containes a program with a binary
+proj2/	-containes a program with a library
+proj3/	-containes a program with a binary and a library and documentation
+
+
+proj1 is dependant on a 3rd party runtime library in /opt/sfw 
+and a proj2 library
+
+proj3 is dependant on a 3rd party runtime libraries in /opt/v3p and /opt/sfw
+
+/opt/sfw is used for GNU software 
+/opt/v3p is used for other 3rd party software
+/opt/verascape is used for verascape software
+
+
+the makefile will do the following:
+1. make the projects in order
+2. execute the copyfiles.sh script to move project libs and binaries into production directories
+3. create an RPM based on the veraserv.spec file
+
+Note: to execute the binaries from the proper directories we will have to set LD_LIBRARY_PATH properly to the various lib directories that we are using in /opt

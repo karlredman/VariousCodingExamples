@@ -1,0 +1,4 @@
+mockups of 3rd party libraries to be used as dependancies in RPM-test programs
+
+GNU/	-used to build the mock GNU libs for testing to be installed in /opt/sfw
+v3p/	-used to build the mock 3rd party libs for testing to be installed in /opt/v3p

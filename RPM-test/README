@@ -1,0 +1,4 @@
+this directory structure emulates that of a build system directory structure for RPM package creation examples
+
+the opt.dir-structure.tgz file should be exploded with caution as it uses absolute paths and is necessary for the 
+package building system to work properly.
