@@ -5,13 +5,13 @@
 	
 
 #include <stdio.h>
-#include <vga.h>
-#include <vgagl.h>
+#include <asm/vga.h>
+//#include <vgagl.h>
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <termios.h>
-#include <term.h>
+//#include <term.h>
 //#include <curses.h>
 #include <unistd.h>
 

@@ -1,3 +1,3 @@
 rm a.out
 #g++ sierpinski3d_a.c -lglut -lGL -lGLU
-g++ $1.c -lglut -lGL -lGLU
+gcc $1.c -lglut -lGL -lGLU
