@@ -1,0 +1,22 @@
+hello.o: hello.c ../include/config.h /usr/include/stdio.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/gnu/stubs.h \
+ /usr/lib/gcc-lib/i386-slackware-linux/egcs-2.91.66/include/stddef.h \
+ /usr/lib/gcc-lib/i386-slackware-linux/egcs-2.91.66/include/stdarg.h \
+ /usr/include/bits/types.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
+ /usr/include/bits/stdio.h ../include/hello.h
+hello.c :
+../include/config.h :
+/usr/include/stdio.h :
+/usr/include/features.h :
+/usr/include/sys/cdefs.h :
+/usr/include/gnu/stubs.h :
+/usr/lib/gcc-lib/i386-slackware-linux/egcs-2.91.66/include/stddef.h :
+/usr/lib/gcc-lib/i386-slackware-linux/egcs-2.91.66/include/stdarg.h :
+/usr/include/bits/types.h :
+/usr/include/libio.h :
+/usr/include/_G_config.h :
+/usr/include/bits/stdio_lim.h :
+/usr/include/bits/stdio.h :
+../include/hello.h :

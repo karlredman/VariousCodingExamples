@@ -1,0 +1,12 @@
+AC_INIT(src)
+AM_CONFIG_HEADER(include/config.h)
+AM_INIT_AUTOMAKE(run_free, 0.05)
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_OUTPUT(Makefile
+include/Makefile
+src/Makefile
+src/run_free/Makefile
+src/kbhit/Makefile
+)

@@ -1,0 +1,4 @@
+hello_lib.o: hello_lib.c ../include/common.h ../include/hello_lib.h
+hello_lib.c :
+../include/common.h :
+../include/hello_lib.h :
