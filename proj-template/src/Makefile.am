@@ -1,1 +1,1 @@
-SUBDIRS = project
+SUBDIRS = project project-c++
