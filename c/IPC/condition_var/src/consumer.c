@@ -1,5 +1,4 @@
 //consumer.c  -creates shared memory, and displays the contents
-//making a change to make cvs update
 
 #define POSIX_SOURCE 1
 #include <pthread.h>
