@@ -1,0 +1,67 @@
+The jist of what you need to do to get a one-off going is below. I'm not
+going to deal with telling you all about editing configure.in and the like.
+I'm going to presume that you pretty much just want to throw some source 
+code into the src/project directory or something and get going....
+
+1. Edit toplevel project files
+	AUTHORS, ChangeLog, NEWS, README, COPYING, and INSTALL. 
+
+	COPYING and INSTALL will use the default GNU stuff if 
+	you don't provide them.
+
+
+2. Add source files to your src/ subdirectory and setup your Makefile.am files.
+	Presumably, you will just use the src/project directory for a one-off.
+
+	If you do not use the src/project subdirectory try this:
+		1. create a new subdirectory under src/
+		2. copy the files from src/project to your new direcotory
+			(herin known as your_proj for simplicity)
+		3. edit the Makefile.am under  src/your_proj
+		4. edit the Makefile.am under src/ to include your project
+			in particular edit the [thing]_PROGRAMS, [thing]_LDADD,
+			and [thing]_SOURCES entries and add the files you want
+			to compile uner the [thing]_SOURCES entry -where [thing]
+			represents your name for your_proj respectively.
+		5. edit the Makefile.am uner bin/ if desired
+		6. edit configure.in (AC_OUTPUT entery)
+			Add your project to the Makefile list just like I 
+			did for the src/project directory.
+		6. run autoconf from the toplevel directory
+		7. run automake from the toplevel directory
+		9. run ./configure from the toplevel directory
+		10. run make
+		11. after that, if your stuff doesn't build, then go read up
+			on the autoconf/automake commands. I assure you, this
+			should work -I maticulously checked this thing and use
+			this template myself and this stuff works just as I 
+			have stated.
+
+
+3. Edit the bin/Makefile.am file
+	Asuming that you want your binaries to be in a convenient place 
+	and that you have not done so already.
+
+
+4. Run 'automake -a' from the toplevel directory.
+
+
+NOTE:
+	If you edit your configure.in file or the like your going to have to
+	run 'autoconf' before you run 'automake' 
+
+5. Run './configure' from the toplevel or whatever (if you make a build 
+	directory then you probably already have something like this).
+
+6. Run make or 'make distcheck' -assuming that everything when ok up to here.
+
+
+
+IF YOUR HAVING TROUBLE AND YOU THING YOU ARE MISSING FILES:
+1. I maintain this template in a form that is most simple. Try the following and see if that works.
+	        aclocal		#create aclocal.m4
+                autoconf	#create configure script and stuff
+                automake -a	#make Makefile.in files and such
+		./configure	#run the configure script
+		make		#make the test program
+		make distclean	#cleanup everything and start as outlined above
