@@ -1,0 +1,1 @@
+clear; gcc plasma_saver.c -o plasma -L/usr/X11R6/lib -lXt -lX11 -lGL -lglut -lGLU -lvgagl -lvga
