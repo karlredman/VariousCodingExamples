@@ -1,0 +1,43 @@
+This project is a responce to tests presented to me from a company I 
+once interviewed for.
+
+In an attempt to make this test easy to evaluate I went a little crazy
+with the programming here. I've enjoyed this test because I was able to 
+do some fun programming while trying to prove myself as a proficient 
+programmer.  I was privleged to have learned some new stuff too.
+
+This is an automake script driven project that will build itself I have 
+only tested this project on Slackware Linux thus far (as of 12-21-2000) 
+but it should run on just about anything with a GNU compiler package.  
+"make install" has been prohibited in this distrobution.
+
+To run the examples/solutions you can just go to the "./bin" directory
+and run the individual programs (ans1, ans2, ans3, and ans3a). 
+
+You will find the code for these programs under the "./src/" directory
+structure. "./src/c" containes answers to the first 3 problems while
+"./src/cc" containes a bonus proof for the third problem only.
+
+The original email message requesting answers for the solutions 
+presented here is also included with this tarball under the "./doc"
+directory. The file name is STG_TEST.
+
+Below you will find directions on what we have here and what to do.
+
+
+if you experience any problems please email me at: 
+parasyte@enteract.com
+
+Sincerely,
+Karl N. Redman
+
+
+INSTALLING/MAKING:
+
+1. run "./configure" in this directory
+
+2. run "make"
+
+3. change directory to "./bin" to run the programs
+
+4. review the source code in directories "src/c" and "src/cc".

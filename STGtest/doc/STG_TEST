@@ -1,0 +1,112 @@
+Karl,
+
+Here are the questions we talked about. Please email your answers back
+to us. Let me know if you have any questions.
+
+--------------C597AEFE8AFACDDB23F75D43
+Content-Type: text/plain; charset=us-ascii;
+ name="questions.txt"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="questions.txt"
+
+1. Write a C function that takes an array of integers and reorders the
+   array IN PLACE such that any zeroes are placed at the beginning of
+   the array, followed by the nonzero elements in any order.  For
+   example, if the original array contains
+
+        43  9  0  -5  0  0  17
+
+   a correct result would be
+
+        0  0  0  -5  9  43  17
+
+  Here's a skeleton definition for the function:
+
+        void
+        reorder(int *arr, int length)
+        {
+                
+        }
+
+   arr points to the array and length gives the number of elements.
+   Remember that this must be done in place, meaning that you can't
+   declare another array inside the function to use for reordering.
+
+
+2. Write a C function to return the number of 1 bits contained in a
+   one byte value.  Here are some example sets of input and output
+   values:
+
+        Input           Output
+        ----------------------
+        5               2
+        0               0
+        32              1
+        127             7
+
+   Your initial approach will probably involve using an
+   iterative method of some sort (which is fine).  After you do it
+   that way, see if you can come up with a method that doesn't require
+   any repetitive operations (i.e., a method that doesn't loop, doesn't
+   examine each bit to determine how many are set to 1, doesn't do anything
+   8 times, etc.). The goal of this non-iterative method is to produce the
+   count of 1 bits as fast as possible.
+
+   Here's a skeleton definition for the function:
+
+        int
+        count_bits(unsigned char value)
+        {
+
+        }
+
+
+3. Given the partial definition for the "Thing" class below, there is a
+   problem with the code in main().  Can you identify and explain the
+   problem and propose a solution?
+
+        #define NULL 0    // this is the standard definition of NULL
+ 
+        class Thing {
+ 
+        public:
+            Thing();
+            Thing(char *);
+            Thing(char);
+ 
+            // ...
+ 
+        };
+ 
+        Thing::Thing()
+        {
+            // ...
+        }
+ 
+        Thing::Thing(char *p)
+        {
+            // ...
+        }
+ 
+        Thing::Thing(char c)
+        {
+            // ...
+        }
+ 
+        int
+        main(int argc, char *argv[])
+        {
+            Thing thing1(NULL);
+            Thing thing2("hi there");
+ 
+            // ...
+ 
+            return 0;
+        }
+
+
+
+--------------C597AEFE8AFACDDB23F75D43--
+
+
