@@ -1,0 +1,26 @@
+AC_INIT(src)
+AM_INIT_AUTOMAKE(expecttest,0.0.1)
+AM_CONFIG_HEADER(include/config.h)
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+##
+echo "blah, blah, blah"
+echo "this is a subliminal message...."
+##
+AC_PROG_INSTALL
+AC_OUTPUT(Makefile \
+src/Makefile \
+
+src/test/Makefile \
+scripts/Makefile \
+
+bin/Makefile \
+include/Makefile ) 
+##
+##
+##
+echo ""
+echo "--- Now run make, binaries will be in ./bin ---"
+echo "-------- Don't forget to read the README file ------------"
+echo ""

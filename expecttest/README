@@ -1,0 +1,27 @@
+This projects demonstrates an expect script running a rsh session on 
+another machine that executes the test programs found in bin.
+
+make sure that the test programs are in the PATH for the login you use.
+
+you will have to edit the expect script found in scripts/ to set the path properly.
+
+also, of coarse, make sure that 'expect' is in your path properly.
+
+
+HOWTO RUN THIS STUFF:
+	open 2 terminals: one to watch things happening in the background of
+the machine that the test programs are on and another to execute the 
+expect program.
+
+	use 'scripts/watch_script' to watch background processes and cat the 
+nohup file
+
+	use 'scripts/expect_script' to run the programs the wrong way
+
+	use /scripts/expect_script2' to run the programs in a more right way
+
+	use /scripts/expect_script3' to run the programs in an even more right way
+
+that's it!
+
+Karl N. Redman 1-27-01

@@ -1,0 +1,211 @@
+#!/usr/bin/expect 
+
+####################
+## GLOBALS
+####################
+set host	cvs-obt-01;
+set login_id	kredman;
+set password 	poki1bmf;
+set path	"~/expecttest/bin";
+#set prompt	"(%|#|$)";
+set prompt	"*$*";
+
+set timeout	30;
+####################
+####################
+   
+
+proc telnet_login { host login_id password } {
+     ## very generic login for telnet sessions
+     
+     global prompt;
+
+     # perform login
+
+     send "telnet $host\r";
+     expect {
+       timeout {puts "telnet session failed"; exit}
+       "login: ";
+     }
+     
+     send "$login_id\r";
+     expect {
+       timeout {puts "telnet login failed"; exit}
+       "Password: ";
+     }
+
+     send "$password\r";
+     expect {
+       timeout {puts "telnet password failed"; exit}
+       $prompt;
+     }
+}
+
+
+proc do_login { } {
+     ## generic login for this script
+
+     global host login_id password path prompt;
+
+     telnet_login $host $login_id $password;
+     
+     send "export PATH=\$PATH:$path\r";
+     expect *;
+
+     #send "ls";
+     #expect *
+}
+
+proc run_program { prog args } {
+     ##caller must perform expect
+
+    # run in the background
+    send "nohup $prog $args &\r"
+    #expect *
+
+    # allow fs to catch up
+    #send "sleep 2\r"
+    #expect *
+
+    # tail nohup until we get a responce from prog
+    send "tail -f ~/nohup.out\r"
+}
+
+####################################################
+####################################################
+# MAIN
+####################################################
+####################################################
+spawn $env(SHELL);
+expect *;
+
+send "cd\r";
+expect *;
+
+do_login
+
+# remove the old nohup.out
+send "rm -f ~/nohup.out\r"
+expect *
+
+send "touch ~/nohup.out\r"
+expect *
+
+send "exit\r"
+
+
+#######################################
+####### ONE
+#######################################
+
+spawn $env(SHELL);
+expect *;
+
+send "cd\r";
+expect *;
+
+do_login
+
+run_program test1 
+expect {
+  timeout { puts "timeout"; exit}
+  "Program test1 Running" {send "exit\r"; expect *;}
+  eof {puts "eof found"; exit}
+}
+
+
+#######################################
+####### TWO
+#######################################
+
+spawn $env(SHELL);
+expect *;
+
+send "cd\r";
+expect *;
+
+do_login
+set child_pid [fork];
+
+if {$child_pid} {
+  #this is the parent
+  run_program test2 x y
+    expect {
+    timeout {puts "zzz timed out"; exit;}
+    "Program Error" {
+      puts "\r";
+      puts "\r";
+      puts "program error, now what?"; 
+      puts "expect exiting with error";
+      puts "\r";
+      exit;
+    }
+    "Program test2 Running" {send "exit\r"; expect *}
+  }
+} else {
+  set timeout 60
+  spawn $env(SHELL);
+  expect *;
+  
+  send "cd\r";
+  expect *;
+  
+  do_login;
+  run_program echo xxx;
+  expect {
+    timeout {puts "yyy timed out"; }
+    "Program Error" {
+      puts "\r";
+      puts "\r";
+      puts "program error, now what?"; 
+      puts "expect exiting with error";
+      puts "\r";
+    }
+    "Program test2 Done" {send "exit\r"; expect *}
+  }
+  send "eeeeeeeeeeeeekkkkkkkkkk\r";
+}
+ 
+
+#######################################
+####### THREE
+#######################################
+
+spawn $env(SHELL);
+expect *;
+
+send "cd\r";
+expect *;
+
+do_login
+run_program test3 x y
+expect {
+  timeout {puts "timed out"; exit;}
+  "Program Error" {
+    puts "\r";
+    puts "\r";
+    puts "program error, now what?"; 
+    puts "expect exiting with error";
+    puts "\r";
+  }
+  "Program Running" {send "exit\r"; expect *}
+}
+
+######################
+# part doux
+#####################
+
+set timeout 60
+spawn $env(SHELL);
+expect *;
+
+send "cd\r";
+expect *;
+
+do_login;
+run_program echo yyy
+expect {
+timeout {puts "xxx timed out"; exit;}
+"Program test2 Done" {send "exit\r"; expect *}
+}
+send "eeeeeeeeeeeeekkkkkkkkkk\r";

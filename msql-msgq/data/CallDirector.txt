@@ -1,0 +1,2 @@
+1	1	sol-dev-06	192.168.254.56	macaddr1	192.168.254.56	macaddr2	1
+2	2	sol-dev-07	192.168.254.57	macaddr1	192.168.254.57	macaddr2	1

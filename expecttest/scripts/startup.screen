@@ -1,0 +1,156 @@
+
+
+                     License Manager
+ 				     ----------------
+
+
+
+$ nlmstart
+SN:             100120807
+HostLock:       anyhost
+Port:           8470
+Checksum:       750a9f29ec74
+   288/288      sp-chan         600     999     16-jun-2001
+   43200/43200  dru             600     999     16-jun-2001
+    0/ 0        v-chan          600     999     16-jun-2001
+    1/ 1        tool            600     999     16-jun-2001
+    6/ 6        server          600     999     16-jun-2001
+
+Nuance License Manager ready.
+
+
+==============================================================
+
+
+  					Resource Manager
+					----------------
+
+
+
+$ resource-manager
+Now accepting server connections on UDP port 7777
+
+=================================================================
+
+					Compilation Server
+					-----------------
+
+
+ compilation-server -package /home/tkeane/motxml/voxml-ng/N62Package/vmlinterp.
+us
+
+Toolbox Server, version Jan  4 2001. 
+Copyright (c) 1997, Nuance Communications.  All Rights Reserved.
+
+MULTI-threaded server.
+
+Server ready to accept connections on port 10101...
+
+
+
+=================================================================
+
+					Recognition Server
+					------------------
+
+$ recserver -package /home/tkeane/motxml/voxml-ng/N62Package/vmlinterp.us
+RecServer running.
+The RecServer will place any logs into directory: /tmp/
+host is sol-dev-05
+Requesting license for 1 server.
+License request granted.
+Loading recognition packages...
+Package "NUANCE,v7.0.2,1116,60187688--520677594" loaded in 160.48 seconds.
+All packages loaded.
+Recserver running in multi-threaded mode.
+Recserver ready to accept connections on port 8200
+
+Recserver accepting resource manager connection.
+Resource Manager connection successfully established.
+
+
+
+
+=================================================================
+
+
+					Text-to-Speech
+					--------------
+
+$ pwd
+/home/tkeane/work/tts
+
+$ nutts-speechify
+start of main()
+tts() called
+
+Start of main()
+
+Toolbox Server, version Jan  4 2001. 
+Copyright (c) 1997, Nuance Communications.  All Rights Reserved.
+
+MULTI-threaded server.
+
+Start of run()
+Server ready to accept connections on port 32323...
+
+
+=================================================================
+
+
+					Recognition Client
+					------------------
+Part I
+-------
+
+$ recclient
+recclient:  recclient version 4
+recclient:  running in multithreaded mode with 3 threads.
+
+recclient:  waiting for clients to connect on port 9200.
+
+
+Part II
+-------
+
+1..48 clients possible.
+
+recclient:  waiting for clients to connect on port 9200.
+:  RCENGINE client (ID 8) intialization completed in 0.42 sec (0.22 cpu sec)
+
+=================================================================
+
+				SIP Voice Server
+ 				---------------
+
+$ vsvoice
+
+Registering...
+SetCallFactory...
+Run...
+
+=================================================================
+
+				Motorola java voice xml interpreter
+				-----------------------------------
+
+$ java -classpath node7.jar com.mot.icsd.voxml.framework.NodeMain Node.propsfile=generic.props
+Welcome to the Motorola Voice Gateway.
+Copyright (c) Motorola, Inc. 1998-2000.  All rights reserved.
+Release 1.1 (Build-2001-01-12)
+Opening properties file [generic.props]
+This System will expire [Sun Apr 22 22:03:36 CDT 2001]
+Entering Self Launch
+Starting browser b1 @ http://localhost:8080/start?-instancename=b1
+Starting browser b2 @ http://localhost:8080/start?-instancename=b2
+Starting browser b3 @ http://localhost:8080/start?-instancename=b3
+Starting browser b4 @ http://localhost:8080/start?-instancename=b4
+Starting browser b5 @ http://localhost:8080/start?-instancename=b5
+Starting browser b6 @ http://localhost:8080/start?-instancename=b6
+Starting browser b7 @ http://localhost:8080/start?-instancename=b7
+Starting browser b8 @ http://localhost:8080/start?-instancename=b8
+
+
+#### Look at recclient for initializaton.
+
+

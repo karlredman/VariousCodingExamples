@@ -1,0 +1,7 @@
+while true 
+do 
+clear
+ps -edf |grep test
+tail ~/nohup.out
+sleep 1
+done

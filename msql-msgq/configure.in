@@ -1,0 +1,33 @@
+AC_INIT(lib)
+AM_INIT_AUTOMAKE(msql-dbwriter,0.0.1)
+AM_CONFIG_HEADER(include/config.h)
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_RANLIB
+AC_PROG_INSTALL
+##
+echo "blah, blah, blah"
+echo "this is a subliminal message...."
+##
+AC_OUTPUT(Makefile \
+include/Makefile \
+lib/Makefile \
+src/Makefile \
+
+src/testC/Makefile \
+src/testCC/Makefile \
+src/cdwraptest/Makefile \
+src/producer/Makefile \
+src/consumer/Makefile \
+
+data/Makefile \
+schema/Makefile \
+
+bin/Makefile )
+##
+##
+##
+echo ""
+echo "--- Now run make, binaries will be in ./bin ---"
+echo ""

@@ -1,0 +1,26 @@
+cd /home/parasyte/projects/timers-0.0.1/src/timers2
+
+		set external_editor_command "Send_Command_To_SN 127.0.0.1 1180 B9TEm5cmt8j6G8D907dS"
+		proc Send_Command_To_SN {host port password args} {
+			global sn_socket_port
+			if {![info exists sn_socket_port]} {
+				set ret [catch {set sn_socket_port [socket $host $port]}]
+				if {$ret} {
+					tk_dialog .warn-sn Error $err error_image 0 Ok
+					return
+				}
+			}
+			set ret [catch {
+					if {[lindex $args 0] == "edit"} {
+						puts $sn_socket_port [list gdb_edit [list password $password] [list data $args]]
+						flush $sn_socket_port
+					}
+				} err]
+			if {$ret} {
+				tk_dialog .warn-sn Error $err error_image 0 Ok
+				return
+			}
+		}
+#message read, self-destruction
+file delete -force -- /home/parasyte/projects/timers-0.0.1/src/timers2/.snprj/tmp_WEKxYF
+

@@ -1,0 +1,119 @@
+#!/usr/bin/expect
+
+######## edit theses !!!!!!!!!
+
+set host	scyld
+set password	eertwfld
+set path	/home/parasyte/projects/expect_examples/bin
+
+#set host	cvs-obt-01
+set login_id 	parasyte
+#set password	password
+#set path	~/expecttest-0.0.1/bin
+
+######### end edit section !!!!!!!!
+
+
+## set timeouts to 30 seconds
+set timeout 30
+
+## perform login
+spawn telnet $host
+expect "login"
+send "$login_id\r"
+expect "Password:"
+send "$password\r"
+expect ":$ "
+
+## set the path
+send "export PATH=\$PATH:$path\r"
+expect ":$ "
+
+## remove the old nohup.out
+send "rm -f nohup.out\r"
+expect *
+
+send "touch ~/nohup.out\r"
+expect *
+
+## run test2 in the background
+send "nohup test2 1 2 3 &\r"
+expect *
+
+send "sleep 2\r"
+expect *
+
+## tail nohup until we get a responce from test2
+send "tail -f nohup.out\r"
+expect {
+	timeout {puts "timed out"; exit}
+	"Program Error" {
+				puts "\r";
+				puts "\r";
+				puts "program error, now what?"; 
+				puts "expect exiting with error";
+				puts "\r";
+				exit; 
+	}
+	"Program Running"
+	}
+
+
+
+## run test 3 with an error
+send "exit"
+expect *
+
+## perform login
+spawn telnet $host
+expect "login"
+send "$login_id\r"
+expect "Password:"
+send "$password\r"
+expect ":$ "
+
+## set the path
+send "export PATH=\$PATH:$path\r"
+expect ":$ "
+
+send "echo \"doing test3\"\r"
+expect *
+
+send "sleep 10\r"
+expect *
+
+
+## remove the old nohup.out
+#send "rm -f nohup.out\r"
+#expect *
+
+send "touch ~/nohup.out\r"
+expect *
+
+## run test3 in the background
+send "nohup test3 1 2 3 &\r"
+expect *
+
+send "sleep 2\r"
+expect *
+
+## tail nohup until we get a responce from test3
+send "tail -f nohup.out\r"
+expect {
+	timeout {puts "timed out"; exit}
+	"Program Error" {
+				puts "\r";
+				puts "\r";
+				puts "program error, now what?"; 
+				puts "expect exiting with error";
+				puts "\r";
+				exit; }
+	"Program Running"
+	}
+
+## SUCCESS -run test1 again
+send "test1\r"
+expect {
+	"Program Error" {puts "program error, now what?"; exit }
+	"Program Running*"
+	}

@@ -1,0 +1,4 @@
+This directory is here as a convenience for a user that doesn't want to install
+the binaries but just wants to run them.
+
+It is up to the developer to add the names and locations of the executables to the Makefile.am file.

@@ -1,0 +1,9 @@
+1	1	0	s1.lc1.mg1	1
+2	1	1	s2.lc1.mg1	2
+3	1	2	s3.lc1.mg1	3
+4	1	2	s4.lc1.mg1	4
+5	2	0	s1.lc2.mg1	1
+6	2	2	s2.lc2.mg1	2
+7	2	2	s3.lc2.mg1	3
+8	2	2	s4.lc2.mg1	4
+9	5	2	s1.lc1.mg2	1

@@ -1,0 +1,20 @@
+do this:
+./configure
+make
+
+your executables will be in the bin directory and the source is in the src 
+directory.
+
+
+timers: A timer that operates off of a thread. the timer uses setitimer system
+timer to as the timer/clock
+
+timers1: same as timers but uses posix create_timer() instad of setitimer()
+
+timers2: a full but immature setitimer() timer API example program with 
+classes
+
+timers4: same as timer2 except that the API is much more mature, potential bugs
+are eliminated, algorythms have been tightened and signal handling is a bit more 
+solid. Comments are added as well.
+

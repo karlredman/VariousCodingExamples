@@ -1,0 +1,28 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:556: checking for a BSD compatible install
+configure:609: checking whether build environment is sane
+configure:666: checking whether make sets ${MAKE}
+configure:712: checking for working aclocal
+configure:725: checking for working autoconf
+configure:738: checking for working automake
+configure:751: checking for working autoheader
+configure:764: checking for working makeinfo
+configure:783: checking for gcc
+configure:896: checking whether the C compiler (gcc  ) works
+configure:912: gcc -o conftest    conftest.c  1>&5
+configure:938: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:943: checking whether we are using GNU C
+configure:952: gcc -E conftest.c
+configure:971: checking whether gcc accepts -g
+configure:1003: checking how to run the C preprocessor
+configure:1024: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1087: checking for c++
+configure:1119: checking whether the C++ compiler (c++  ) works
+configure:1135: c++ -o conftest    conftest.C  1>&5
+configure:1161: checking whether the C++ compiler (c++  ) is a cross-compiler
+configure:1166: checking whether we are using GNU C++
+configure:1175: c++ -E conftest.C
+configure:1194: checking whether c++ accepts -g
+configure:1241: checking for a BSD compatible install

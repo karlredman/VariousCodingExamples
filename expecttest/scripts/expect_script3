@@ -1,0 +1,160 @@
+#!/usr/bin/expect 
+
+####################
+## GLOBALS
+####################
+set host	cvs-obt-01;
+set login_id	kredman;
+set password 	poki1bmf;
+set path	~/expecttest/bin;
+
+#set prompt	"(%|#|\\\$) $";
+#catch {set prompt $env(EXPECT_PROMPT)}
+
+#set prompt	"$ ";
+set prompt	*$*;
+
+set timeout	30;
+
+set ESCAPE	\003
+####################
+####################
+   
+
+proc telnet_login { host login_id password } {
+     ## very generic login for telnet sessions
+     
+     global prompt;
+
+     # perform login
+
+     send "telnet $host\r";
+     expect {
+       timeout {puts "telnet session failed"; exit}
+       "login: ";
+     }
+     
+     send "$login_id\r";
+     expect {
+       timeout {puts "telnet login failed"; exit}
+       "Password: ";
+     }
+
+     send "$password\r";
+     expect {
+       timeout {puts "telnet password failed"; exit}
+       $prompt;
+     }
+}
+
+
+proc do_login { } {
+     ## generic login for this script
+
+     global host login_id password path prompt;
+
+     telnet_login $host $login_id $password;
+     
+     send "export PATH=\$PATH:$path\r";
+     expect *;
+}
+
+proc run_program { prog args } {
+     ##caller must perform expect
+
+    # run in the background
+    send "nohup $prog $args &\r"
+    expect *
+
+    # tail nohup until we get a responce from prog
+    send "tail -f ~/nohup.out\r"
+}
+
+####################################################
+####################################################
+# MAIN
+####################################################
+####################################################
+
+#spawn a shell
+spawn $env(SHELL);
+expect $prompt;
+
+#goto home dir.
+send "cd\r";
+expect $prompt;
+
+#perform login
+do_login
+
+# remove the old nohup.out
+send "rm -f ~/nohup.out\r"
+expect $prompt;
+
+send "touch ~/nohup.out\r"
+expect $prompt;
+
+
+#######################################
+####### ONE
+#######################################
+
+run_program test1;
+expect {
+  timeout { puts "test1 timeout"; exit}
+  "Program test1 Running" {send "$ESCAPE"; expect $prompt}
+  eof {puts "ERROR: eof found"; exit}
+}
+
+
+#######################################
+####### TWO
+#######################################
+
+  run_program test2 x y
+    expect {
+    timeout {puts "test2 timed out"; exit;}
+    "Program Error" {
+      send "$ESCAPE";
+      expect *;
+      puts "\r";
+      puts "\r";
+      puts "program ERROR, now what?"; 
+      puts "script exiting with ERROR";
+      puts "\r";
+      exit;
+    }
+    "Program test2 Running" {send "$ESCAPE"; expect $prompt;}
+  }
+ 
+
+#######################################
+####### THREE
+#######################################
+
+run_program test3 x y
+expect {
+  timeout {puts "timed out"; exit;}
+  "Program Error" {
+    send "$ESCAPE";
+    expect *;
+    puts "\r";
+    puts "\r";
+    puts "program ERROR, now what?"; 
+    puts "continueing......";
+    puts "\r";
+    
+  }
+  "Program Running" {send "$ESCAPE"; expect $prompt;}
+}
+
+######################
+# part doux
+#####################
+
+set timeout 60
+run_program echo "...waiting for test2 to finish starting"
+expect {
+timeout {puts "test2 timed out"; exit;}
+"Program test2 Done" {send "$ESCAPE"; expect $prompt;}
+}

@@ -1,0 +1,8 @@
+1	1	lc1.mg1	125.5.65	lc1mg1mac	1
+2	1	lc2.mg1	125.5.65	lc2mg1mac	2
+3	1	lc3.mg1	125.5.65	lc3mg1mac	3
+4	1	lc4.mg1	125.5.65	lc4mg1mac	4
+5	2	lc1.mg2	125.5.65	lc1mg2mac	1
+6	2	lc2.mg2	125.5.65	lc2mg2mac	2
+7	2	lc3.mg2	125.5.65	lc3mg2mac	3
+8	2	lc4.mg2	125.5.65	lc4mg2mac	4
