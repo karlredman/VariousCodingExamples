@@ -1,0 +1,42 @@
+The jist of what you need to do to get a one-off going is below. I'm not
+going to deal with telling you all about editing configure.in and the like.
+I'm going to presume that you pretty much just want to throw some source 
+code into the src/project directory or something and get going....
+
+1. Edit toplevel project files
+	AUTHORS, ChangeLog, NEWS, README, COPYING, and INSTALL. 
+
+	COPYING and INSTALL will use the default GNU stuff if 
+	you don't provide them.
+
+
+2. Add source files to your src/ subdirectory and setup your Makefile.am file.
+	Presumably, you will just use the src/project directory for a one-off.
+
+
+3. Edit the bin/Makefile.am file
+	Asuming that you want your binaries to be in a convenient place
+
+
+4. Run 'automake -a' from the toplevel directory.
+
+
+NOTE:
+	If you edit your configure.in file or the like your going to have to
+	run 'autoconf' before you run 'automake' 
+
+5. Run './configure' from the toplevel or whatever (if you make a build 
+	directory then you probably already have something like this).
+
+6. Run make or 'make distcheck' -assuming that everything when ok up to here.
+
+
+
+IF YOUR HAVING TROUBLE AND YOU THING YOU ARE MISSING FILES:
+1. I maintain this template in a form that is most simple. Try the following and see if that works.
+	        aclocal		#create aclocal.m4
+                autoconf	#create configure script and stuff
+                automake -a	#make Makefile.in files and such
+		./configure	#run the configure script
+		make		#make the test program
+		make distclean	#cleanup everything and start as outlined above
