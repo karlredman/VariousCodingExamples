@@ -30,6 +30,7 @@ int main()
 	  cout << "SUCCESS: write." <<endl;
 
 	ret = c.blockingRead();
+
 	if(ret == -1)
 	  {
 	    cout << "ERROR: read failed with: " << errno << endl;

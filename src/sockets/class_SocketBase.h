@@ -17,6 +17,7 @@
    but is used by stevens
 */
 
+#ifdef SOCKET_USE_MSGHDR
 struct if_msghdr {
   u_short ifm_mshlen;
   u_char ifm_version;
@@ -27,7 +28,9 @@ struct if_msghdr {
   u_short ifm_index;
   //struct if_data ifm_data; ...who knows... -ksr
 };
+#endif //SOCKET_USE_MSGHDR
 
+#ifdef SOCKET_USE_IFA_MSGHDR
 struct ifa_msghdr {
   u_short ifam_msglen;
   u_char ifam_version;
@@ -38,11 +41,14 @@ struct ifa_msghdr {
   u_short ifam_index;
   int ifam_metric;
 };
+#endif SOCKET_USE_IFA_MSGHDR
+
 
 class SocketBase
 {
  public:
   SocketBase();
+  //SocketBase( unix socket stuff);
   virtual ~SocketBase();
   virtual int init(int arg) = 0;
 
@@ -56,6 +62,8 @@ class SocketBase
 
   void setSocketAddress(sa_family_t fam, const char * addr, in_port_t port);
   void setSocketAddress(sa_family_t fam, in_port_t port);
+
+//FIX THIS!!!
   sockaddr_in getSocketAddress()
     {return socketAddress;}
 
