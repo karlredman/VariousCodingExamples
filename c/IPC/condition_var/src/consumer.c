@@ -126,13 +126,14 @@ int main(int argc, char argv[])
       //get pid and put it into shared memory
       for(thisClient = 0; thisClient < MAXCLIENTS; thisClient++)
 	{
-	  printf("pid of client %d = %d\n",thisClient, shared_stuff->pids[thisClient]);
 	  //take the first available slot
 	  if( shared_stuff->pids[thisClient] == 0 )
 	    {
 	      shared_stuff->pids[thisClient] = getpid(); 
+	      printf("pid of client %d = %d\n",thisClient, shared_stuff->pids[thisClient]);
 	      break;
 	    }
+	  printf("pid of client %d = %d\n",thisClient, shared_stuff->pids[thisClient]);
 	} //end for
 
       /* ....and yes, it is possible for two consumers to find the

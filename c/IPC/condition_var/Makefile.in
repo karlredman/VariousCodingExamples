@@ -58,24 +58,22 @@ POST_UNINSTALL = :
 AMTAR = @AMTAR@
 AWK = @AWK@
 CC = @CC@
-CPP = @CPP@
-CXX = @CXX@
 DEPDIR = @DEPDIR@
 EXEEXT = @EXEEXT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
-RANLIB = @RANLIB@
 VERSION = @VERSION@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
-SUBDIRS = include lib src bin template-doc
+SUBDIRS = src include
+
+EXTRA_DIST = Condition_Variable_FAQ
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
-CONFIG_HEADER = $(top_builddir)/include/config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 
@@ -363,8 +361,6 @@ uninstall-info: uninstall-info-recursive
 	uninstall-am uninstall-info-am uninstall-info-recursive \
 	uninstall-recursive
 
-
-#EXTRA_DIST = something
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
