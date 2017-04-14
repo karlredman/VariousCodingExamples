@@ -1,0 +1,16 @@
+ls
+ls -al
+ls -al /etc
+ls -al /etc
+emacs /etc/passwd
+ls -al /etc
+ls
+ls
+ls
+ls
+ls
+ls -al /etc/passwd
+ls -al /etc/passwd
+ls
+ls -al /etc/passwd
+ls -al /etc/X11/xinitrc/xinitrc

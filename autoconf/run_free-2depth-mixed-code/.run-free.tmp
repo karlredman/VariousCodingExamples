@@ -1,0 +1,1 @@
+ls -al /etc/X11/xinitrc/xinitrc;run-free-kbhit

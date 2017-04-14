@@ -1,0 +1,14 @@
+error()
+{
+        echo "requires an argument: [name of project]"
+        exit
+}      
+
+if [ "$#" == 0 ]; then
+        error
+fi
+
+
+tar zxvf test-0.0.0.tar.gz
+
+mv ./test-0.0.0 ./$1

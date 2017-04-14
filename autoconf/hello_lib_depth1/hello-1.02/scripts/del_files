@@ -1,0 +1,19 @@
+PWD=`pwd`
+IS_SCRIPTS_DIR=`echo $PWD | grep scripts`
+
+if [ ! $IS_SCRIPTS_DIR = "" ]; then
+        echo "ERROR: files in this dirctory must not be run from this directory."
+        echo "run scripts from the toplevel dirctory."
+        echo "example: scripts/a_script"
+	exit
+fi
+
+	rm -f AUTHORS COPYING ChangeLog INSTALL Makefile Makefile.in NEWS README aclocal.m4 config.cache config.log config.status configure install-sh missing mkinstalldirs hello*gz
+
+	rm -f src/Makefile src/Makefile.in 
+
+	rm -f include/config.h.in include/stamp-h.in include/Makefile include/Makefile.in include/stamp-h include/config.h
+
+	rm -f lib/Makefile lib/Makefile.in
+
+	rm -f scripts/Makefile scritps/Makefile.in

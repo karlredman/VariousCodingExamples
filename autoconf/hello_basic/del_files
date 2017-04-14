@@ -1,0 +1,17 @@
+rm AUTHORS
+rm COPYING
+rm ChangeLog
+rm INSTALL
+rm Makefile
+rm Makefile.in
+rm NEWS
+rm README
+rm aclocal.m4
+rm config.cache
+rm config.log
+rm config.status
+rm configure
+rm hello-1.0.tar.gz
+rm install-sh
+rm missing
+rm mkinstalldirs

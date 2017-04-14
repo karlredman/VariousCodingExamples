@@ -1,0 +1,51 @@
+PWD=`pwd`
+echo $PWD
+IS_SCRIPTS_DIR=`echo $PWD | grep scripts`
+
+if [ ! $IS_SCRIPTS_DIR = "" ]; then
+        echo "ERROR: files in this dirctory must not be run from this directory."
+        echo "run scripts from the toplevel dirctory."
+        echo "example: scripts/a_script"
+	exit
+fi
+	
+scripts/del_files
+
+# 1. create source file(s)
+
+# 2. compile source file(s) and verify that there is something working 
+
+# 3. create Makefile.am by hand
+## example:
+# ---begin file--
+# bin_PROGRAMS = hello
+# hello_SOURCES = hello.c
+# ---end file--
+
+# 4. create configure.in by hand
+## example:
+# ---begin file--
+# AC_INIT(hello.c)
+# AM_INIT_AUTOMAKE(hello, 1.0)
+# AC_PROG_CC
+# AC_PROG_INSTALL
+# AC_OUTPUT(Makefile)
+# ---end file--
+
+# 5. run GNU install tools
+if [ -e Makefile.am ] && [ -e configure.in ]; then
+	aclocal
+	autoconf
+	autoheader
+	autoconf
+	touch NEWS README AUTHORS ChangeLog
+	#acconfig
+	automake -a
+fi
+
+# 6. replace, update the following files NEWS README AUTHORS ChangLog + any
+#	additional files (like Copying)
+
+# 7. test the configure script generated and the distrobution
+./configure
+make distcheck
