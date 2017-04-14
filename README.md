@@ -3,6 +3,7 @@
 ## index goes here
 
 ## directory tree
+```
 .
 ├── autotools_proj_template
 │   ├── bin
@@ -45,4 +46,4 @@
     ├── doc
     ├── scripts
     └── src
-
+```
