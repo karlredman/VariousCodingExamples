@@ -1,0 +1,87 @@
+#!perl -w 
+
+#
+# This picks a random background from /usr/local/lib/X11/backgrounds, 
+# and calls an image viewer to set it as the background.
+#
+# To pick a picture, try "bkgd [picture-name]".  The name does not have
+# to be complete; bkgd only needs the first few letters.
+#
+# This script is Copyright (C) 1998 Scott Scriven, and is released under
+# the GPL version 2.  See the file "COPYING" for more information.
+#
+# 1998-10-13:  Mostly rewritten by Dave Glowacki <dglo@ssec.wisc.edu>
+#
+
+# Feel free to change the directory the images are stored in...
+$bkgddir = "/usr/local/lib/X11/backgrounds/";
+$homedir = "$ENV{HOME}/fvwm/backgrounds/";
+
+# And if you'd like to use a different viewer, set it here.
+$xv = "xv -root -quit +noresetroot";
+$max = " -max";
+# This works for Esetroot:
+#$xv = "Esetroot";
+#$max = " -scale";
+
+$verbose = 1;
+
+##################################################################
+# You probably won't need to modify anything below here...       #
+##################################################################
+
+sub search {
+  my $dir = shift;
+  my @patterns = @_;
+
+  if (!open(DIR, "find $dir -type f -print 2>/dev/null |")) {
+    die "FIND failed!\n";
+  }
+
+  my @list = ();
+
+  while (<DIR>) {
+    my $match = 0;
+
+    if (@patterns == 0) {
+      $match = 1;
+    } else {
+      my $p;
+      foreach $p (@patterns) {
+        if (/$p/) {
+          $match = 1;
+          last;
+        }
+      }
+    }
+
+    if ($match) {
+      chomp;
+      push(@list, $_);
+    }
+  }
+
+  return @list;
+}
+
+@pictures = search $bkgddir, @ARGV;
+splice(@pictures, 0, 0,  search $homedir, @ARGV);
+
+if (@pictures == 0) {
+  print STDERR "No pictures found!\n";
+  exit 1;
+}
+
+srand(time + $$);
+$num = rand @pictures;
+$picture = $pictures[$num];
+
+$name = $picture;
+$name =~ s/^.*\/([^\/]+)$/$1/;
+print "Picture: $name\n" if $verbose;
+
+$xv .= $max if($picture =~ /max/);
+
+`$xv $picture`;
+
+exit 0;
