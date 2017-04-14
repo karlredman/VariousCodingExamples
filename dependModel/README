@@ -1,0 +1,2 @@
+Demonstrates how dependencies work for files needing the arrays in tables.c. 
+The file tables.h contains the exports for the tables used in the library
