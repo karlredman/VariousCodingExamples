@@ -1,0 +1,29 @@
+AC_INIT(src)
+##
+## [Name and version of project here. Note that the template
+## this came from violates the GNU naming convention with a '-']
+AM_INIT_AUTOMAKE(project-template,0.0.2)
+##
+AM_CONFIG_HEADER(include/config.h)
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_RANLIB
+##
+echo "blah, blah, blah"
+echo "this is a subliminal message...."
+##
+AC_PROG_INSTALL
+##
+## [Fix the source directories for makefiles. The First line
+## shouldn't have to be touched.]
+AC_OUTPUT(Makefile include/Makefile lib/Makefile src/Makefile \
+src/project/Makefile \
+src/project-c++/Makefile \
+bin/Makefile template-doc/Makefile) 
+##
+##
+##
+echo ""
+echo "--- Now run make, binaries will be in ./bin ---"
+echo ""

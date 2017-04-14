@@ -1,0 +1,82 @@
+NOTE TO THE USER/READER:
+
+** For a quick start guide, see the 'QUICKSTART' file in this directory. **
+
+This file containes info about what you will need to do to use this 
+template structure. Everything you need to create a basic project should 
+be conveniently available for you right here. Remember, I said simple -if
+you want to do some things that are more complicated then you'll have to
+check out the documentation for autoconf, ranlib, {whatever}, and the like.
+
+The intention here is that you have a basic skeleton from which to consistantly
+create one-offs or what have you without having to rethink everything each time
+you want to sit down and program something. I have found that I create quite 
+a few one-off programs that I end up saving for later use (either in part
+or as the basis for something bigger). The Idea here is that I needed something
+that will survive updates and multiplatform development, something that could
+aid in catagorizing and source revisioning my code -this is my solution for
+now....
+
+--------------------------------------------------
+
+BASIC STEPS TO MAKING A RELATIVELY SIMPLE AUTOCONF/AUTOMAKE PROJECt:
+
+1. Create source files:
+	I'm assuming that you do what everyone else does, wait until the last
+minute to actually make a project work with autoconf and automake. For this
+reason, the first step is to create code and compile it and such (assuming
+C and C++ development here -of coarse). Ideally, you should be setting up
+your project structure before you actuall write code :)
+
+2. Compile sources and verify that stuff works:
+	Alternatively, you could be doing your engineering at this step 
+(and the previous) and actually just have some idea of what your directory
+structure should look like. This template should give you a decient start.
+
+3. Create 'Makefile.am' files by heart (in the various directories):
+	After you figure out where you want your code and stuff to go you
+have to create a Makefile.am file for each directory you plan to use in your
+distrobution. This is a very important step -no 'Makefile.am' an it doesn't 
+get made. See the 'Makefile.am' files in this project for more info.
+
+4. Create a 'configure.in' by hand (top directory only):
+	Same type of deal as with the 'Makefile.am' files. While there might
+be someone who has figured out how to do multiple configure.in files (for
+multiplatform and cross platform development purposes I presume) I am not
+going to act like that possibility even exists. The deal is that automake 
+expects only one configure.in file. See the 'configure.in' file at the 
+toplevel directory of this project for an example.
+
+5. Edit your project text files (toplevel directory):
+	There are several files that need to go with your distrobution. If 
+you do not create these files ahead of time, then automake will generate them
+for you. These files are 'INSTALL' and 'COPYING'. In addition you NEED the 
+following files for automake to work: 'NEWS', 'README', 'AUTHORS, and 
+'ChangeLog'. I prefer, often, to edit this stuff right off the top (I even
+have a script that I use that takes care of most of this stuff for me).
+
+6. run GNU install tools in the right order
+	a. aclocal
+		This will copy a 'aclocal.m4' script into your project
+
+	b. autoconf
+		This will create your configure script
+
+	c. automake -a
+		This will create your 'Makefile.in' files and, with the '-a'
+		option, install the following files if needed: install-sh,
+		mkinstalldirs, missing, INSTALL, COPYING, and depcomp. 
+		Remember, if you don't supply NEWS, README, AUTHORS, and 
+		ChangeLog after this step the project won't work. 
+		Also, this thing will do some checks on your Makefile.am 
+		files and such for portability, etc.
+	
+	In short, the process goes like this:
+		aclocal
+		autoconf
+		automake -a
+		touch NEWS README AUTHORS ChangeLog #so their just blank
+		automake -a #again for luck
+
+That should be it.
+-parasyte
