@@ -1,0 +1,76 @@
+2003-02-03  parasyte  <parasyte@linux.local>
+
+	* MCastClient.C, MCastServer.C, Makefile.am, Makefile.in, class_MCast.C, class_MCast.h, class_MCastClient.C, class_MCastClient.h, class_MCastServer.C, class_MCastServer.h, class_SocketBase.C, class_SocketBase.h:
+	finished with basic communications classes
+
+	* MCastServer.C, Makefile.am, Makefile.in, class_MCast.C, class_MCastServer.C, class_MCastServer.h, class_SocketBase.C, class_SocketBase.h:
+	working MCast Server
+
+	* MCastServer.C, Makefile.am, class_MCast.C, class_MCast.h, class_MCastServer.C, class_MCastServer.h, class_SocketBase.C, class_SocketBase.h, class_UDP.C, class_UDP.h, class_UDPClient.C, class_UDPClient.h, class_UDPServer.C, class_UDPServer.h:
+	adding MCast classes and server file
+
+	* class_UDP.h, class_UDPServer.h:
+	still fixing stuff and also getting ready to merge classes for MCast classes
+	to inherit from UDP classes
+
+2003-02-03  parasyte  <parasyte@linux.local>
+
+	* bin/Makefile.am, bin/Makefile.in, src/sockets/MCastClient.C, src/sockets/MCastServer.C, src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/class_MCast.C, src/sockets/class_MCast.h, src/sockets/class_MCastClient.C, src/sockets/class_MCastClient.h, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h:
+	finished with basic communications classes
+
+	* src/sockets/MCastServer.C, src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/class_MCast.C, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h:
+	working MCast Server
+
+	* src/sockets/MCastServer.C, src/sockets/Makefile.am, src/sockets/class_MCast.C, src/sockets/class_MCast.h, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h, src/sockets/class_UDP.C, src/sockets/class_UDP.h, src/sockets/class_UDPClient.C, src/sockets/class_UDPClient.h, src/sockets/class_UDPServer.C, src/sockets/class_UDPServer.h:
+	adding MCast classes and server file
+
+	* src/sockets/class_UDP.h, src/sockets/class_UDPServer.h:
+	still fixing stuff and also getting ready to merge classes for MCast classes
+	to inherit from UDP classes
+
+	* README, bin/Makefile.am, bin/Makefile.in, src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/class_UDPClient.C:
+	ok, everything is fixed now -yeesh!
+
+	* src/sockets/MCastServer.C, src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/TCPClient.C, src/sockets/TCPServer.C, src/sockets/TCPclient.C, src/sockets/TCPserver.C, src/sockets/UDPClient.C, src/sockets/UDPServer.C, src/sockets/class_MCast.C, src/sockets/class_MCast.h, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_UDP.C, src/sockets/class_UDP.h, src/sockets/class_UDPClient.C, src/sockets/class_UDPClient.h, src/sockets/class_UDPServer.C, src/sockets/class_UDPServer.h:
+	uh, yea... I messed up. This commit fixes the naming of files for UDP
+	instead of multicast.
+
+	* src/sockets/MCastServer.C, src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/class_MCast.C, src/sockets/class_MCast.h, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h:
+	Added MCast Server Class (preliminary)
+
+2003-02-02  parasyte  <parasyte@linux.local>
+
+	* src/sockets/MCastServer.C, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h:
+	update
+
+	* src/sockets/MCastServer.C: addeded file
+
+	* src/sockets/class_TCPSocket.C: made it pretty
+
+	* src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/class_MCastServer.C, src/sockets/class_MCastServer.h, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h, src/sockets/class_TCPClient.h, src/sockets/class_TCPServer.h, src/sockets/class_TCPSocket.C, src/sockets/class_TCPSocket.h:
+	added files for multicast and fixed socket base class for difference
+	between Mcast and TCP
+
+	* src/file_templates/Makefile.am, src/file_templates/Makefile.in, AUTHORS, bin/Makefile.am, bin/Makefile.in, configure, configure.in, mkinstalldirs, src/Makefile.am, src/Makefile.in, src/sockets/Makefile.am, src/sockets/Makefile.in:
+	final for today
+
+	* src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/TCPclient.C, src/sockets/TCPserver.C, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h, src/sockets/class_TCPClient.C, src/sockets/class_TCPClient.h, src/sockets/class_TCPServer.C, src/sockets/class_TCPServer.h:
+	New file.
+
+	* src/sockets/Makefile.am, src/sockets/Makefile.in, src/sockets/TCPclient.C, src/sockets/TCPserver.C, src/sockets/class_SocketBase.C, src/sockets/class_SocketBase.h, src/sockets/class_TCPClient.C, src/sockets/class_TCPClient.h, src/sockets/class_TCPServer.C, src/sockets/class_TCPServer.h:
+	initial import
+
+	* src/file_templates/class_ThisClass.h, src/file_templates/main.C:
+	New file.
+
+	* src/file_templates/class_ThisClass.h, src/file_templates/main.C:
+	initial import
+
+2003-02-01  parasyte  <parasyte@linux.local>
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in, NEWS, README, aclocal.m4, bin/Makefile.am, bin/Makefile.in, bin/README, configure, configure.in, depcomp, include/Makefile.am, include/Makefile.in, include/config.h.in, include/parasyte.h, include/stamp-h.in, install-sh, lib/Makefile.am, lib/Makefile.in, lib/console.c, missing, mkinstalldirs, src/Makefile.am, src/Makefile.in, src/project-c++/Makefile.am, src/project-c++/Makefile.in, src/project-c++/classes.h, src/project-c++/main.C, src/project/Makefile.am, src/project/Makefile.in, src/project/main.c, template-doc/Makefile.am, template-doc/Makefile.in, template-doc/QUICKSTART, template-doc/README:
+	New file.
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in, NEWS, README, aclocal.m4, bin/Makefile.am, bin/Makefile.in, bin/README, configure, configure.in, depcomp, include/Makefile.am, include/Makefile.in, include/config.h.in, include/parasyte.h, include/stamp-h.in, install-sh, lib/Makefile.am, lib/Makefile.in, lib/console.c, missing, mkinstalldirs, src/Makefile.am, src/Makefile.in, src/project-c++/Makefile.am, src/project-c++/Makefile.in, src/project-c++/classes.h, src/project-c++/main.C, src/project/Makefile.am, src/project/Makefile.in, src/project/main.c, template-doc/Makefile.am, template-doc/Makefile.in, template-doc/QUICKSTART, template-doc/README:
+	initial import
+
